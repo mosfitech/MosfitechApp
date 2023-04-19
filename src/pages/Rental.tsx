@@ -75,10 +75,8 @@ export default function Rental({ setPages }) {
         console.log(response.data);
         if (response.data.status == 200) {
           setRentalStatus(1);
-          if (rentalStatus == 1) {
-            pubKits();
-            setReadytoRental(true);
-          }
+          pubKits();
+          setReadytoRental(true);
         }
       })
       .catch(function (error) {
@@ -98,10 +96,8 @@ export default function Rental({ setPages }) {
         // handle success
         console.log(response.data);
         if (response.data.status == 200) {
-          if (rentalStatus == 0) {
-            pubKits();
-            setReadytoRental(false);
-          }
+          pubKits();
+          setReadytoRental(false);
         }
       })
       .catch(function (error) {
@@ -148,7 +144,7 @@ export default function Rental({ setPages }) {
           {readyToRental ? (
             <div>
               <div className="bg-gray-100 w-full h-96 max-h-2xl shadow-xl rounded-b-lg">
-                <Maps />
+                <Maps data={dataKits} />
               </div>
               <div className="flex justify-between  items-center mt-10 px-3 gap-1 ">
                 <p className="text-lg font-semibold inline-block align-middle ">

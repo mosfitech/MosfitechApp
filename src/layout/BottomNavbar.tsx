@@ -51,7 +51,7 @@ export default function BottomNavbar({ setPages }) {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <button
-            onClick={() => handleClick("motempat")}
+            onClick={() => alert("coming soon")}
             data-tooltip-target="tooltip-wallet"
             type="button"
             className="bg-motempat rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-motempat-400 dark:hover:bg-gray-800 group"
@@ -119,7 +119,7 @@ export default function BottomNavbar({ setPages }) {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <button
-            onClick={() => handleClick("mobarang")}
+            onClick={() => alert("coming soon")}
             data-tooltip-target="tooltip-settings"
             type="button"
             className="bg-mobarang  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-mobarang-400 dark:hover:bg-gray-800 group"
@@ -148,7 +148,7 @@ export default function BottomNavbar({ setPages }) {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <button
-            onClick={() => handleClick("moaman")}
+          onClick={() => alert("coming soon")}
             data-tooltip-target="tooltip-profile"
             type="button"
             className="bg-moaman  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-moaman-400 dark:hover:bg-gray-800 group"

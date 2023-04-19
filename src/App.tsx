@@ -20,7 +20,7 @@ function App() {
     setUser(userId);
   }, [status]);
   return (
-    <div className="bg-gray-50 w-full h-screen">
+    <div className="bg-gray-50 container mx-auto px-10 h-screen">
       {auth === "authenticated" && user !== null ? (
         <>
           {pages === "motrip" && (
