@@ -30,19 +30,7 @@ export default function Motrip() {
   return (
     <>
       {navigation == "motrip" && (
-        <div className="border-t-8 border-primary container mx-auto h-96 bg-gray-100 mt-2 rounded-t-xl">
-          <div className="flex justify-center pt-3 mb-3">
-            <svg
-              width="64"
-              height="3"
-              viewBox="0 0 64 3"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="64" height="3" rx="1.5" fill="#C4C4C4" />
-            </svg>
-          </div>
-          <TopNavbar />
+       <>
           <div className="bg-gray-100 w-full h-60 max-h-2xl">
             <MapsAllKits data={dataKits} />
           </div>
@@ -56,7 +44,7 @@ export default function Motrip() {
               ))}
             </ScrollMenu>
           </div>
-        </div>
+    </>
       )}
     </>
   );

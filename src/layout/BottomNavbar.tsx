@@ -6,81 +6,67 @@ export default function BottomNavbar({ setPages }) {
   };
   return (
     <>
-      <div className="fixed z-50 w-full h-12 max-w-lg -translate-x-1/2 bg-gray-400 border border-gray-400 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 shadow-lg">
-        <div className="flex h-full max-w-lg justify-between px-8 py-1">
-          <button
-            onClick={() => handleClick("motrip")}
-            data-tooltip-target="tooltip-home"
-            type="button"
-            className="bg-primary  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 rounded-l-full hover:bg-primary-400 dark:hover:bg-gray-800 group"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      <div className="fixed z-50 w-full h-20 max-w-lg -translate-x-1/2 bg-gray-50 border border-gray-400 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 shadow-xl">
+        <div className="flex h-full max-w-lg justify-between px-5 py-1">
+        <div className="text-center">
+            <button
+              onClick={() => handleClick("motrip")}
+              type="button"
+              className="bg-primary  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 rounded-l-full hover:bg-primary-400 dark:hover:bg-gray-800 group"
             >
-              <g clip-path="url(#clip0_823_20)">
-                <path
-                  d="M14.0743 5.03332C15.0698 5.03332 15.8843 4.25332 15.8843 3.29998C15.8843 2.34665 15.0698 1.56665 14.0743 1.56665C13.0788 1.56665 12.2643 2.34665 12.2643 3.29998C12.2643 4.25332 13.0788 5.03332 14.0743 5.03332ZM4.57183 10.6667C2.03783 10.6667 0.0468292 12.5733 0.0468292 15C0.0468292 17.4267 2.03783 19.3333 4.57183 19.3333C7.10583 19.3333 9.09683 17.4267 9.09683 15C9.09683 12.5733 7.10583 10.6667 4.57183 10.6667ZM4.57183 18.0333C2.85233 18.0333 1.40433 16.6467 1.40433 15C1.40433 13.3533 2.85233 11.9667 4.57183 11.9667C6.29133 11.9667 7.73933 13.3533 7.73933 15C7.73933 16.6467 6.29133 18.0333 4.57183 18.0333ZM9.82083 9.36665L11.9928 7.28665L12.7168 7.97998C13.8933 9.10665 15.4318 9.79998 17.3323 9.79998V8.06665C15.9748 8.06665 14.8888 7.54665 14.0743 6.76665L12.3548 5.11998C11.9023 4.77332 11.4498 4.59998 10.9068 4.59998C10.3638 4.59998 9.91133 4.77332 9.63983 5.11998L7.10583 7.54665C6.74383 7.89332 6.56283 8.32665 6.56283 8.75998C6.56283 9.27998 6.74383 9.71332 7.10583 9.97332L10.0018 12.4V16.7333H11.8118V11.36L9.82083 9.36665ZM17.2418 10.6667C14.7078 10.6667 12.7168 12.5733 12.7168 15C12.7168 17.4267 14.7078 19.3333 17.2418 19.3333C19.7758 19.3333 21.7668 17.4267 21.7668 15C21.7668 12.5733 19.7758 10.6667 17.2418 10.6667ZM17.2418 18.0333C15.5223 18.0333 14.0743 16.6467 14.0743 15C14.0743 13.3533 15.5223 11.9667 17.2418 11.9667C18.9613 11.9667 20.4093 13.3533 20.4093 15C20.4093 16.6467 18.9613 18.0333 17.2418 18.0333Z"
-                  fill="white"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_823_20">
-                  <rect
-                    x="0.0468292"
-                    y="0.266663"
-                    width="21.72"
-                    height="20.8"
-                    rx="10.4"
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_823_20)">
+                  <path
+                    d="M14.0743 5.03332C15.0698 5.03332 15.8843 4.25332 15.8843 3.29998C15.8843 2.34665 15.0698 1.56665 14.0743 1.56665C13.0788 1.56665 12.2643 2.34665 12.2643 3.29998C12.2643 4.25332 13.0788 5.03332 14.0743 5.03332ZM4.57183 10.6667C2.03783 10.6667 0.0468292 12.5733 0.0468292 15C0.0468292 17.4267 2.03783 19.3333 4.57183 19.3333C7.10583 19.3333 9.09683 17.4267 9.09683 15C9.09683 12.5733 7.10583 10.6667 4.57183 10.6667ZM4.57183 18.0333C2.85233 18.0333 1.40433 16.6467 1.40433 15C1.40433 13.3533 2.85233 11.9667 4.57183 11.9667C6.29133 11.9667 7.73933 13.3533 7.73933 15C7.73933 16.6467 6.29133 18.0333 4.57183 18.0333ZM9.82083 9.36665L11.9928 7.28665L12.7168 7.97998C13.8933 9.10665 15.4318 9.79998 17.3323 9.79998V8.06665C15.9748 8.06665 14.8888 7.54665 14.0743 6.76665L12.3548 5.11998C11.9023 4.77332 11.4498 4.59998 10.9068 4.59998C10.3638 4.59998 9.91133 4.77332 9.63983 5.11998L7.10583 7.54665C6.74383 7.89332 6.56283 8.32665 6.56283 8.75998C6.56283 9.27998 6.74383 9.71332 7.10583 9.97332L10.0018 12.4V16.7333H11.8118V11.36L9.82083 9.36665ZM17.2418 10.6667C14.7078 10.6667 12.7168 12.5733 12.7168 15C12.7168 17.4267 14.7078 19.3333 17.2418 19.3333C19.7758 19.3333 21.7668 17.4267 21.7668 15C21.7668 12.5733 19.7758 10.6667 17.2418 10.6667ZM17.2418 18.0333C15.5223 18.0333 14.0743 16.6467 14.0743 15C14.0743 13.3533 15.5223 11.9667 17.2418 11.9667C18.9613 11.9667 20.4093 13.3533 20.4093 15C20.4093 16.6467 18.9613 18.0333 17.2418 18.0333Z"
                     fill="white"
                   />
-                </clipPath>
-              </defs>
-            </svg>
-            <span className="sr-only">MoTrip</span>
-          </button>
-          <div
-            id="tooltip-home"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            MoTrip
-            <div className="tooltip-arrow" data-popper-arrow></div>
+                </g>
+                <defs>
+                  <clipPath id="clip0_823_20">
+                    <rect
+                      x="0.0468292"
+                      y="0.266663"
+                      width="21.72"
+                      height="20.8"
+                      rx="10.4"
+                      fill="white"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <div className="text-sm px-auto text-center">MoTrip</div>
           </div>
-          <button
-            onClick={() => alert("coming soon")}
-            data-tooltip-target="tooltip-wallet"
-            type="button"
-            className="bg-motempat rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-motempat-400 dark:hover:bg-gray-800 group"
-          >
-            <svg
-              width="14"
-              height="17"
-              viewBox="0 0 14 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="text-center">
+            <button
+              onClick={() => alert("coming soon")}
+              type="button"
+              className="bg-motempat rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-motempat-400 dark:hover:bg-gray-800 group"
             >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1 2.79999C1 2.26955 1.21071 1.76085 1.58579 1.38577C1.96086 1.0107 2.46957 0.799988 3 0.799988H11C11.5304 0.799988 12.0391 1.0107 12.4142 1.38577C12.7893 1.76085 13 2.26955 13 2.79999V14.8C13.2652 14.8 13.5196 14.9053 13.7071 15.0929C13.8946 15.2804 14 15.5348 14 15.8C14 16.0652 13.8946 16.3196 13.7071 16.5071C13.5196 16.6946 13.2652 16.8 13 16.8H10C9.73478 16.8 9.48043 16.6946 9.29289 16.5071C9.10536 16.3196 9 16.0652 9 15.8V13.8C9 13.5348 8.89464 13.2804 8.70711 13.0929C8.51957 12.9053 8.26522 12.8 8 12.8H6C5.73478 12.8 5.48043 12.9053 5.29289 13.0929C5.10536 13.2804 5 13.5348 5 13.8V15.8C5 16.0652 4.89464 16.3196 4.70711 16.5071C4.51957 16.6946 4.26522 16.8 4 16.8H1C0.734784 16.8 0.48043 16.6946 0.292893 16.5071C0.105357 16.3196 0 16.0652 0 15.8C0 15.5348 0.105357 15.2804 0.292893 15.0929C0.48043 14.9053 0.734784 14.8 1 14.8V2.79999ZM4 3.79999H6V5.79999H4V3.79999ZM6 7.79999H4V9.79999H6V7.79999ZM8 3.79999H10V5.79999H8V3.79999ZM10 7.79999H8V9.79999H10V7.79999Z"
-                fill="white"
-              />
-            </svg>
-
-            <span className="sr-only">MoTempat</span>
-          </button>
-          <div
-            id="tooltip-wallet"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            MoTempat
-            <div className="tooltip-arrow" data-popper-arrow></div>
+              <svg
+                width="14"
+                height="17"
+                viewBox="0 0 14 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1 2.79999C1 2.26955 1.21071 1.76085 1.58579 1.38577C1.96086 1.0107 2.46957 0.799988 3 0.799988H11C11.5304 0.799988 12.0391 1.0107 12.4142 1.38577C12.7893 1.76085 13 2.26955 13 2.79999V14.8C13.2652 14.8 13.5196 14.9053 13.7071 15.0929C13.8946 15.2804 14 15.5348 14 15.8C14 16.0652 13.8946 16.3196 13.7071 16.5071C13.5196 16.6946 13.2652 16.8 13 16.8H10C9.73478 16.8 9.48043 16.6946 9.29289 16.5071C9.10536 16.3196 9 16.0652 9 15.8V13.8C9 13.5348 8.89464 13.2804 8.70711 13.0929C8.51957 12.9053 8.26522 12.8 8 12.8H6C5.73478 12.8 5.48043 12.9053 5.29289 13.0929C5.10536 13.2804 5 13.5348 5 13.8V15.8C5 16.0652 4.89464 16.3196 4.70711 16.5071C4.51957 16.6946 4.26522 16.8 4 16.8H1C0.734784 16.8 0.48043 16.6946 0.292893 16.5071C0.105357 16.3196 0 16.0652 0 15.8C0 15.5348 0.105357 15.2804 0.292893 15.0929C0.48043 14.9053 0.734784 14.8 1 14.8V2.79999ZM4 3.79999H6V5.79999H4V3.79999ZM6 7.79999H4V9.79999H6V7.79999ZM8 3.79999H10V5.79999H8V3.79999ZM10 7.79999H8V9.79999H10V7.79999Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <div className="text-sm px-auto text-center">MoTempat</div>
           </div>
+
           <div className="flex items-center justify-center">
             <button
               onClick={() => handleClick("scan")}
@@ -106,77 +92,53 @@ export default function BottomNavbar({ setPages }) {
                   fill="white"
                 />
               </svg>
-
-              <span className="sr-only">Scan & Use</span>
             </button>
           </div>
-          <div
-            id="tooltip-new"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            Scan & Use
-            <div className="tooltip-arrow" data-popper-arrow></div>
-          </div>
-          <button
-            onClick={() => alert("coming soon")}
-            data-tooltip-target="tooltip-settings"
-            type="button"
-            className="bg-mobarang  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-mobarang-400 dark:hover:bg-gray-800 group"
-          >
-            <svg
-              width="16"
-              height="18"
-              viewBox="0 0 16 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="text-center">
+            <button
+              onClick={() => alert("coming soon")}
+              data-tooltip-target="tooltip-settings"
+              type="button"
+              className="bg-mobarang  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 hover:bg-mobarang-400 dark:hover:bg-gray-800 group"
             >
-              <path
-                d="M1 0.799988C0.734784 0.799988 0.48043 0.905345 0.292893 1.09288C0.105357 1.28042 0 1.53477 0 1.79999C0 2.0652 0.105357 2.31956 0.292893 2.50709C0.48043 2.69463 0.734784 2.79999 1 2.79999H2.22L2.525 4.02199C2.52803 4.03606 2.53136 4.05006 2.535 4.06399L3.893 9.49399L3 10.386C1.74 11.646 2.632 13.8 4.414 13.8H13C13.2652 13.8 13.5196 13.6946 13.7071 13.5071C13.8946 13.3196 14 13.0652 14 12.8C14 12.5348 13.8946 12.2804 13.7071 12.0929C13.5196 11.9053 13.2652 11.8 13 11.8H4.414L5.414 10.8H12C12.1857 10.7999 12.3676 10.7481 12.5255 10.6504C12.6834 10.5528 12.811 10.4131 12.894 10.247L15.894 4.24699C15.9702 4.09457 16.0061 3.92521 15.9985 3.75499C15.9908 3.58478 15.9398 3.41934 15.8502 3.27438C15.7606 3.12943 15.6355 3.00976 15.4867 2.92673C15.3379 2.84371 15.1704 2.80008 15 2.79999H4.28L3.97 1.55699C3.91583 1.34074 3.79095 1.1488 3.61521 1.01164C3.43946 0.87449 3.22293 0.799994 3 0.799988H1ZM14 16.3C14 16.6978 13.842 17.0793 13.5607 17.3606C13.2794 17.642 12.8978 17.8 12.5 17.8C12.1022 17.8 11.7206 17.642 11.4393 17.3606C11.158 17.0793 11 16.6978 11 16.3C11 15.9022 11.158 15.5206 11.4393 15.2393C11.7206 14.958 12.1022 14.8 12.5 14.8C12.8978 14.8 13.2794 14.958 13.5607 15.2393C13.842 15.5206 14 15.9022 14 16.3ZM4.5 17.8C4.89782 17.8 5.27936 17.642 5.56066 17.3606C5.84196 17.0793 6 16.6978 6 16.3C6 15.9022 5.84196 15.5206 5.56066 15.2393C5.27936 14.958 4.89782 14.8 4.5 14.8C4.10218 14.8 3.72064 14.958 3.43934 15.2393C3.15804 15.5206 3 15.9022 3 16.3C3 16.6978 3.15804 17.0793 3.43934 17.3606C3.72064 17.642 4.10218 17.8 4.5 17.8Z"
-                fill="white"
-              />
-            </svg>
-
-            <span className="sr-only">MoBarang</span>
-          </button>
-          <div
-            id="tooltip-settings"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            MoBarang
-            <div className="tooltip-arrow" data-popper-arrow></div>
+              <svg
+                width="16"
+                height="18"
+                viewBox="0 0 16 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 0.799988C0.734784 0.799988 0.48043 0.905345 0.292893 1.09288C0.105357 1.28042 0 1.53477 0 1.79999C0 2.0652 0.105357 2.31956 0.292893 2.50709C0.48043 2.69463 0.734784 2.79999 1 2.79999H2.22L2.525 4.02199C2.52803 4.03606 2.53136 4.05006 2.535 4.06399L3.893 9.49399L3 10.386C1.74 11.646 2.632 13.8 4.414 13.8H13C13.2652 13.8 13.5196 13.6946 13.7071 13.5071C13.8946 13.3196 14 13.0652 14 12.8C14 12.5348 13.8946 12.2804 13.7071 12.0929C13.5196 11.9053 13.2652 11.8 13 11.8H4.414L5.414 10.8H12C12.1857 10.7999 12.3676 10.7481 12.5255 10.6504C12.6834 10.5528 12.811 10.4131 12.894 10.247L15.894 4.24699C15.9702 4.09457 16.0061 3.92521 15.9985 3.75499C15.9908 3.58478 15.9398 3.41934 15.8502 3.27438C15.7606 3.12943 15.6355 3.00976 15.4867 2.92673C15.3379 2.84371 15.1704 2.80008 15 2.79999H4.28L3.97 1.55699C3.91583 1.34074 3.79095 1.1488 3.61521 1.01164C3.43946 0.87449 3.22293 0.799994 3 0.799988H1ZM14 16.3C14 16.6978 13.842 17.0793 13.5607 17.3606C13.2794 17.642 12.8978 17.8 12.5 17.8C12.1022 17.8 11.7206 17.642 11.4393 17.3606C11.158 17.0793 11 16.6978 11 16.3C11 15.9022 11.158 15.5206 11.4393 15.2393C11.7206 14.958 12.1022 14.8 12.5 14.8C12.8978 14.8 13.2794 14.958 13.5607 15.2393C13.842 15.5206 14 15.9022 14 16.3ZM4.5 17.8C4.89782 17.8 5.27936 17.642 5.56066 17.3606C5.84196 17.0793 6 16.6978 6 16.3C6 15.9022 5.84196 15.5206 5.56066 15.2393C5.27936 14.958 4.89782 14.8 4.5 14.8C4.10218 14.8 3.72064 14.958 3.43934 15.2393C3.15804 15.5206 3 15.9022 3 16.3C3 16.6978 3.15804 17.0793 3.43934 17.3606C3.72064 17.642 4.10218 17.8 4.5 17.8Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <div className="text-sm px-auto text-center">MoBarang</div>
           </div>
-          <button
-          onClick={() => alert("coming soon")}
-            data-tooltip-target="tooltip-profile"
-            type="button"
-            className="bg-moaman  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-moaman-400 dark:hover:bg-gray-800 group"
-          >
-            <svg
-              width="20"
-              height="21"
-              viewBox="0 0 20 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="text-center">
+            <button
+              onClick={() => alert("coming soon")}
+              data-tooltip-target="tooltip-profile"
+              type="button"
+              className="bg-moaman  rounded-full w-12 h-12  inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-moaman-400 dark:hover:bg-gray-800 group"
             >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M2.166 5.79896C5.06114 5.76296 7.84481 4.67742 10 2.74396C12.155 4.67778 14.9387 5.76368 17.834 5.79996C17.944 6.44996 18 7.11996 18 7.80096C18 13.026 14.66 17.471 10 19.118C5.34 17.47 2 13.025 2 7.79996C2 7.11796 2.057 6.44996 2.166 5.79896ZM13.707 9.50696C13.8892 9.31836 13.99 9.06575 13.9877 8.80356C13.9854 8.54136 13.8802 8.29055 13.6948 8.10514C13.5094 7.91973 13.2586 7.81456 12.9964 7.81228C12.7342 7.81001 12.4816 7.9108 12.293 8.09296L9 11.386L7.707 10.093C7.5184 9.9108 7.2658 9.81001 7.0036 9.81228C6.7414 9.81456 6.49059 9.91973 6.30518 10.1051C6.11977 10.2905 6.0146 10.5414 6.01233 10.8036C6.01005 11.0658 6.11084 11.3184 6.293 11.507L8.293 13.507C8.48053 13.6944 8.73484 13.7997 9 13.7997C9.26516 13.7997 9.51947 13.6944 9.707 13.507L13.707 9.50696Z"
-                fill="white"
-              />
-            </svg>
-
-            <span className="sr-only">MoAman</span>
-          </button>
-          <div
-            id="tooltip-profile"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            MoAman
-            <div className="tooltip-arrow" data-popper-arrow></div>
+              <svg
+                width="20"
+                height="21"
+                viewBox="0 0 20 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.166 5.79896C5.06114 5.76296 7.84481 4.67742 10 2.74396C12.155 4.67778 14.9387 5.76368 17.834 5.79996C17.944 6.44996 18 7.11996 18 7.80096C18 13.026 14.66 17.471 10 19.118C5.34 17.47 2 13.025 2 7.79996C2 7.11796 2.057 6.44996 2.166 5.79896ZM13.707 9.50696C13.8892 9.31836 13.99 9.06575 13.9877 8.80356C13.9854 8.54136 13.8802 8.29055 13.6948 8.10514C13.5094 7.91973 13.2586 7.81456 12.9964 7.81228C12.7342 7.81001 12.4816 7.9108 12.293 8.09296L9 11.386L7.707 10.093C7.5184 9.9108 7.2658 9.81001 7.0036 9.81228C6.7414 9.81456 6.49059 9.91973 6.30518 10.1051C6.11977 10.2905 6.0146 10.5414 6.01233 10.8036C6.01005 11.0658 6.11084 11.3184 6.293 11.507L8.293 13.507C8.48053 13.6944 8.73484 13.7997 9 13.7997C9.26516 13.7997 9.51947 13.6944 9.707 13.507L13.707 9.50696Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <div className="text-sm px-auto text-center">MoAman</div>
           </div>
         </div>
       </div>

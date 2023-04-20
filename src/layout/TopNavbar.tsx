@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 
-export default function TopNavbar() {
+export default function TopNavbar({ setPages }) {
   const { status, userId, handleLogOut, displayName, email, photoURL } =
     useContext(AuthContext);
 
@@ -33,7 +33,7 @@ export default function TopNavbar() {
                 placeholder="Mau sewa apa hari ini ?"
               />
             </div>
-            <div className="ml-2">
+            <div className="ml-2" onClick={() => setPages("profile")}>
               <img
                 className="inline-block h-9 w-10 rounded-full ring-2 ring-white"
                 src={photoURL}

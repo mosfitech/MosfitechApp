@@ -3,20 +3,19 @@ import Maps from "./Maps";
 import Countdown from "react-countdown";
 
 export default function OnGoingRental(props: any) {
-  
   return (
-    <div>
-      <div className="bg-gray-100 w-full h-96 max-h-2xl shadow-xl rounded-b-lg">
+    <div className="bg-gray-100 w-full h-96">
+      <div className="max-h-2xl shadow-xl rounded-b-lg">
         <Maps />
       </div>
-      <div className="flex justify-between  items-center mt-10 px-3 gap-1 ">
+      <div className="bg-gray-300 flex justify-between  items-center mt-10 px-3 gap-1 ">
         <p className="text-lg font-semibold inline-block align-middle ">
           Remaining Time
         </p>
         <Countdown
           className="font-bold text-3xl inline-block align-middle "
           date={Date.now() + 1000 * 60 * props.rental_time}
-          onComplete={()=> console.log("ok")}
+          onComplete={() => console.log("ok")}
         />
       </div>
       <div

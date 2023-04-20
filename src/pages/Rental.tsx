@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import QrReader from "react-qr-scanner";
-import { AuthContext } from "../context/authContext";
-import OnGoingRental from "../components/OnGoingRental";
-import Maps from "../components/Maps";
+import { useContext, useEffect, useState } from "react";
 import Countdown from "react-countdown";
+import Maps from "../components/Maps";
+
+import { AuthContext } from "../context/authContext";
+import QrReader from "react-qr-reader";
+
 export default function Rental({ setPages }) {
   const { status, userId, handleLogOut, displayName, email, photoURL } =
     useContext(AuthContext);
@@ -13,7 +14,7 @@ export default function Rental({ setPages }) {
     height: "500px",
     width: "100%",
   };
-
+  const [selected, setSelected] = useState("environment");
   const [result, setResult] = useState<any>(null);
   const [dataKits, setDataKits] = useState<any>();
   const [rentalTime, setRentalTime] = useState<number>(15);
@@ -26,8 +27,8 @@ export default function Rental({ setPages }) {
 
   const handleScan = (data: any) => {
     if (data !== null) {
-      setResult(data.text);
-      // console.log(data.text);
+      setResult(data);
+      console.log(data);
     }
   };
 
@@ -118,8 +119,8 @@ export default function Rental({ setPages }) {
   }, [result, readyToRental]);
 
   return (
-    <>
-      <div className="flex justify-start p-5 bg-gray">
+    <div className="w-full h-screen bg-primary">
+      <div className="flex justify-start p-5 bg-gray-300">
         {!readyToRental && (
           <svg
             onClick={() => setPages("motrip")}
@@ -143,7 +144,7 @@ export default function Rental({ setPages }) {
         <>
           {readyToRental ? (
             <div>
-              <div className="bg-gray-100 w-full h-96 max-h-2xl shadow-xl rounded-b-lg">
+              <div className="bg-gray-300 w-full h-96 max-h-2xl shadow-xl rounded-b-lg">
                 <Maps data={dataKits} />
               </div>
               <div className="flex justify-between  items-center mt-10 px-3 gap-1 ">
@@ -168,7 +169,7 @@ export default function Rental({ setPages }) {
           ) : (
             <>
               {dataKits && (
-                <div className="bg-gray-500 rounded-b-2xl py-6 border-b border-slate-200 text-left px-6 pt-20">
+                <div className="bg-gray-300 rounded-b-2xl py-6 border-b border-slate-200 text-left px-6 pt-20">
                   <div className="flex flex-wrap justify-start">
                     <p className="font-bold leading-relaxed text-gray-950 mb-4">
                       UUID : {result}
@@ -184,7 +185,7 @@ export default function Rental({ setPages }) {
                       Type : {dataKits.type}
                     </p>
                   </div>
-                  <div className="flex flex-wrap justify-start">
+                  <div className="flex flex-wrap justify-start ">
                     <p className="font-bold leading-relaxed text-gray-950 mb-4">
                       Harga Sewa : Rp. {dataKits.price} / menit
                     </p>
@@ -196,7 +197,7 @@ export default function Rental({ setPages }) {
                       </label>
                       <div className="relative">
                         <select
-                          className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-950 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-bold"
+                          className="block appearance-none w-full bg-gray-500 border border-gray-200 text-gray-950 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 font-bold"
                           id="grid-state"
                           onChange={(e) => handleRentalTime(e.target.value)}
                         >
@@ -218,7 +219,7 @@ export default function Rental({ setPages }) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap justify-start bg-gray-50 p-3">
+                  <div className="flex flex-wrap justify-start bg-gray-500 p-3">
                     <p className="font-bold leading-relaxed text-gray-950 inline-block align-middle">
                       Estimasi Biaya : Rp. {dataKits.price * rentalTime}
                     </p>
@@ -248,18 +249,28 @@ export default function Rental({ setPages }) {
           )}
         </>
       ) : (
-        <div className="bg-gray rounded-b-xl shadow-xl">
-          <QrReader
-            delay={500}
-            style={previewStyle}
-            onError={handleError}
-            onScan={handleScan}
-          />
+        <div className="bg-gray-300 rounded-b-3xl shadow-xl">
+          <div className="flex justify-center">
+            <QrReader
+              facingMode={selected}
+              delay={500}
+              onError={handleError}
+              onScan={handleScan}
+              // chooseDeviceId={()=>selected}
+              style={{ width: "600px" }}
+            />
+          </div>
+          <div className="flex items-center justify-center pb-3">
+            <select onChange={(e) => setSelected(e.target.value)}>
+              <option value={"environment"}>Back Camera</option>
+              <option value={"user"}>Front Camera</option>
+            </select>
+          </div>
           <div className="flex items-center justify-center pb-10">
             <p className="font-bold text-xl">Scan Vehicle QR Code </p>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
