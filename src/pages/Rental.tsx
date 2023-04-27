@@ -38,7 +38,9 @@ export default function Rental({ setPages }) {
 
   const getDataKits = async () => {
     await axios
-      .get(`http://127.0.0.1.:3006/kits/rental/${result}`)
+      .get(`https://api.berusaha.live/kits/rental/${result}`, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      })
       .then(function (response) {
         setDataKits(response.data);
         console.log(response);
@@ -48,12 +50,17 @@ export default function Rental({ setPages }) {
         console.log(error);
       });
   };
-  const pubKits = async () => {
+  const pubKits = async (statusRental: any) => {
     await axios
-      .put(`http://127.0.0.1.:3006/kits/publish/`, {
-        uuid: result,
-        rental_status: rentalStatus,
-      })
+      .put(
+        `https://api.berusaha.live/kits/publish/`,
+        {
+          uuid: result,
+          rental_status: statusRental,
+          warning_status: dataKits.warning_status,
+        },
+        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+      )
       .then(function (response) {
         // handle success
         console.log(response.data);
@@ -65,18 +72,23 @@ export default function Rental({ setPages }) {
   };
   const handleSubmit = async () => {
     await axios
-      .put(`http://127.0.0.1.:3006/kits/rental/${result}`, {
-        rental_status: 1,
-        rental_time: rentalTime,
-        latest_rent_username: displayName,
-        latest_rent_email: email,
-      })
+      .put(
+        `https://api.berusaha.live/kits/rental/${result}`,
+        {
+          rental_status: 1,
+          rental_time: rentalTime,
+          latest_rent_username: displayName,
+          latest_rent_email: email,
+        },
+        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+      )
       .then(function (response) {
         // handle success
         console.log(response.data);
         if (response.data.status == 200) {
           setRentalStatus(1);
-          pubKits();
+          let statusRental = 1;
+          pubKits(statusRental);
           setReadytoRental(true);
         }
       })
@@ -87,17 +99,25 @@ export default function Rental({ setPages }) {
   };
   const updateEndRental = async () => {
     await axios
-      .put(`http://127.0.0.1.:3006/kits/rental/${result}`, {
-        rental_status: 0,
-        rental_time: 0,
-        latest_rent_username: displayName,
-        latest_rent_email: email,
-      })
+      .put(
+        `https://api.berusaha.live/kits/rental/${result}`,
+        {
+          rental_status: 0,
+          rental_time: 0,
+          latest_rent_username: displayName,
+          latest_rent_email: email,
+        },
+        {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        }
+      )
       .then(function (response) {
         // handle success
         console.log(response.data);
         if (response.data.status == 200) {
-          pubKits();
+          setRentalStatus(0);
+          const statusRental = 0;
+          pubKits(statusRental);
           setReadytoRental(false);
         }
       })
@@ -107,7 +127,6 @@ export default function Rental({ setPages }) {
       });
   };
   const handleEndRental = () => {
-    setRentalStatus(0);
     updateEndRental();
   };
 
@@ -115,6 +134,7 @@ export default function Rental({ setPages }) {
     if (result !== null) {
       getDataKits();
     }
+
     // console.log(dataKits);
   }, [result, readyToRental]);
 
@@ -143,9 +163,9 @@ export default function Rental({ setPages }) {
       {result !== null ? (
         <>
           {readyToRental ? (
-            <div>
+            <div className="bg-gray-50 rounded-b-3xl shadow-xl">
               <div className="bg-gray-300 w-full h-96 max-h-2xl shadow-xl rounded-b-lg">
-                <Maps data={dataKits} />
+                <Maps data={dataKits} uuid={result} />
               </div>
               <div className="flex justify-between  items-center mt-10 px-3 gap-1 ">
                 <p className="text-lg font-semibold inline-block align-middle ">

@@ -27,9 +27,9 @@ export default function Profile({ setPages }) {
         <p className="text-3xl font-semibold px-8 py-5">My Profile </p>
         <div className="flex gap-5 mx-1 justify-center rounded-lg shadow-lg py-5">
           <img className="rounded-lg" src={photoURL} alt="" />
-          <div>
-            <p className="text-lg text-gray-950 font-semibold">{displayName}</p>
-            <p className="text-md text-gray-800">{email}</p>
+          <div className="pr-5">
+            <p className="text-md text-gray-950 font-semibold">{displayName}</p>
+            <p className="text-xs text-gray-800">{email}</p>
             <div
               onClick={handleLogOut}
               className="cursor-pointer bg-mobarang text-gray-50 font-bold mt-1 flex justify-center py-1 rounded-lg shadow-md"

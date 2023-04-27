@@ -11,7 +11,9 @@ export default function Motrip() {
   const [dataKits, setDataKits] = useState([]);
   const getAllKits = async () => {
     await axios
-      .get("http://localhost:3006/kits/")
+      .get("https://api.berusaha.live/kits/",{
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      })
       .then(function (response) {
         // handle success
         console.log(response.data);
