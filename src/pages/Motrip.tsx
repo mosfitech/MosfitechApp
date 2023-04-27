@@ -12,7 +12,10 @@ export default function Motrip() {
   const getAllKits = async () => {
     await axios
       .get("https://api.berusaha.live/kits/",{
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       })
       .then(function (response) {
         // handle success

@@ -39,7 +39,10 @@ export default function Rental({ setPages }) {
   const getDataKits = async () => {
     await axios
       .get(`https://api.berusaha.live/kits/rental/${result}`, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       })
       .then(function (response) {
         setDataKits(response.data);
@@ -59,7 +62,12 @@ export default function Rental({ setPages }) {
           rental_status: statusRental,
           warning_status: dataKits.warning_status,
         },
-        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        }
       )
       .then(function (response) {
         // handle success
@@ -80,7 +88,12 @@ export default function Rental({ setPages }) {
           latest_rent_username: displayName,
           latest_rent_email: email,
         },
-        { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        }
       )
       .then(function (response) {
         // handle success
@@ -108,7 +121,10 @@ export default function Rental({ setPages }) {
           latest_rent_email: email,
         },
         {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
         }
       )
       .then(function (response) {

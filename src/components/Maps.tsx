@@ -22,7 +22,10 @@ export default function Maps(props: any) {
   const getDataKits = async () => {
     await axios
       .get(`https://api.berusaha.live/kits/rental/${props.uuid}`, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       })
       .then(function (response) {
         setDataKits(response.data);
