@@ -10,7 +10,7 @@ export default defineConfig({
       registerType: "autoUpdate",
       injectRegister: "script",
       devOptions: {
-        enabled: true,
+        enabled: false,
       },
       manifest: {
         theme_color: "#417505",

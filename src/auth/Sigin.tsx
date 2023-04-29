@@ -95,7 +95,12 @@ export default function Sigin() {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 h-16 flex justify-center">
-        <p className="font-semibold text-gray-800">From Mosfitech</p>
+        <div className="text-center">
+          <p className="font-semibold text-gray-800">From Mosfitech</p>
+          <p className="font-semibold text-xs text-gray-800 mt-1 mb-2">
+            Sedang Digunakan sebagai pengujian Tugas Akhir | Team BIKEBIKEAJA
+          </p>
+        </div>
       </div>
     </div>
   );
