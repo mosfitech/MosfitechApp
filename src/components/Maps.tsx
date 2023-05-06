@@ -9,6 +9,7 @@ import Map, {
 } from "react-map-gl";
 import Pin from "./Pin";
 import axios from "axios";
+import Alert from "./Alert";
 
 // import CITIES from "../.data/Cities.json";
 
@@ -40,50 +41,40 @@ export default function Maps(props: any) {
     const intervalId = setInterval(() => {
       getDataKits();
     }, 1000); // in milliseconds
-  }, [dataKits]);
+  }, []);
 
   return (
-    <Map
-      initialViewState={{
-        latitude: dataKits.latitude_kit,
-        longitude: dataKits.longitude_kit,
-        zoom: 16,
-        bearing: 0,
-        pitch: 0,
-      }}
-      mapStyle="mapbox://styles/mapbox/streets-v12"
-      mapboxAccessToken={TOKEN}
-    >
-      <GeolocateControl position="top-left" />
-      <FullscreenControl position="top-left" />
-      <NavigationControl position="top-left" />
-      <ScaleControl />
-
-      <Marker
-        latitude={dataKits.latitude_kit}
-        longitude={dataKits.longitude_kit}
-        anchor="bottom"
-        onClick={(e) => {
-          // If we let the click event propagates to the map, it will immediately close the popup
-          // with `closeOnClick: true`
-          e.originalEvent.stopPropagation();
+    <>
+      {dataKits.warning_status == 1 && <Alert />}
+      <Map
+        initialViewState={{
+          latitude: dataKits.latitude_kit,
+          longitude: dataKits.longitude_kit,
+          zoom: 16,
+          bearing: 0,
+          pitch: 0,
         }}
+        mapStyle="mapbox://styles/mapbox/streets-v12"
+        mapboxAccessToken={TOKEN}
       >
-        <Pin />
-      </Marker>
+        <GeolocateControl position="top-left" />
+        <FullscreenControl position="top-left" />
+        <NavigationControl position="top-left" />
+        <ScaleControl />
 
-      {/* 
-      {popupInfo && (
-        <Popup
-          anchor="top"
-          longitude={Number(popupInfo.longitude_kit)}
-          latitude={Number(popupInfo.latitude_kit)}
-          onClose={() => setPopupInfo(null)}
+        <Marker
+          latitude={dataKits.latitude_kit}
+          longitude={dataKits.longitude_kit}
+          anchor="bottom"
+          onClick={(e) => {
+            // If we let the click event propagates to the map, it will immediately close the popup
+            // with `closeOnClick: true`
+            e.originalEvent.stopPropagation();
+          }}
         >
-          <p className="px-2">{popupInfo._id}</p>
-          <p className="px-2">{popupInfo.type}</p>
-        </Popup>
-      )} */}
-    </Map>
+          <Pin />
+        </Marker>
+      </Map>
+    </>
   );
 }

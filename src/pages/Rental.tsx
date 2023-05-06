@@ -5,6 +5,9 @@ import Maps from "../components/Maps";
 
 import { AuthContext } from "../context/authContext";
 import QrReader from "react-qr-reader";
+import Loading from "../components/Loading";
+
+interface Type {}
 
 export default function Rental({ setPages }) {
   const { status, userId, handleLogOut, displayName, email, photoURL } =
@@ -20,6 +23,7 @@ export default function Rental({ setPages }) {
   const [rentalTime, setRentalTime] = useState<number>(15);
   const [readyToRental, setReadytoRental] = useState(false);
   const [rentalStatus, setRentalStatus] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const handleError = (err: any) => {
     console.error(err);
@@ -60,7 +64,6 @@ export default function Rental({ setPages }) {
         {
           uuid: result,
           rental_status: statusRental,
-          warning_status: dataKits.warning_status,
         },
         {
           headers: {
@@ -70,8 +73,9 @@ export default function Rental({ setPages }) {
         }
       )
       .then(function (response) {
-        // handle success
+        // handle success hd
         console.log(response.data);
+        setLoading(false);
       })
       .catch(function (error) {
         // handle error
@@ -79,6 +83,7 @@ export default function Rental({ setPages }) {
       });
   };
   const handleSubmit = async () => {
+    setLoading(true);
     await axios
       .put(
         `https://api.berusaha.live/kits/rental/${result}`,
@@ -97,7 +102,7 @@ export default function Rental({ setPages }) {
       )
       .then(function (response) {
         // handle success
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.status == 200) {
           setRentalStatus(1);
           let statusRental = 1;
@@ -110,40 +115,42 @@ export default function Rental({ setPages }) {
         console.log(error);
       });
   };
-  const updateEndRental = async () => {
-    await axios
-      .put(
-        `https://api.berusaha.live/kits/rental/${result}`,
-        {
-          rental_status: 0,
-          rental_time: 0,
-          latest_rent_username: displayName,
-          latest_rent_email: email,
-        },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
+
+  const handleEndRental = async () => {
+    if (confirm("selesaikan penyewaan sekarang !") == true) {
+      setLoading(true);
+
+      await axios
+        .put(
+          `https://api.berusaha.live/kits/rental/${result}`,
+          {
+            rental_status: 0,
+            rental_time: 0,
+            latest_rent_username: displayName,
+            latest_rent_email: email,
           },
-        }
-      )
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-        if (response.data.status == 200) {
-          setRentalStatus(0);
-          const statusRental = 0;
-          pubKits(statusRental);
-          setReadytoRental(false);
-        }
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  };
-  const handleEndRental = () => {
-    updateEndRental();
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then(function (response) {
+          // handle success
+          // console.log(response.data);
+          if (response.data.status == 200) {
+            setRentalStatus(0);
+            const statusRental = 0;
+            pubKits(statusRental);
+            setReadytoRental(false);
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
@@ -204,6 +211,7 @@ export default function Rental({ setPages }) {
             </div>
           ) : (
             <>
+              {loading && <Loading />}
               {dataKits && (
                 <div className="bg-gray-300 rounded-b-2xl py-6 border-b border-slate-200 text-left px-6 pt-20">
                   <div className="flex flex-wrap justify-start">
