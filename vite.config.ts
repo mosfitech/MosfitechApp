@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  base: "/MosfitechApp/",
+  base: "/PersonalTrack/",
   plugins: [
     react(),
     VitePWA({
@@ -17,9 +17,9 @@ export default defineConfig({
         background_color: "#ffffff",
         display: "standalone",
         scope: "/",
-        start_url: "/MosfitechApp/",
-        name: "MosfitechApp",
-        short_name: "MosfitechApp",
+        start_url: "/PersonalTrack/",
+        name: "PersonalTrack",
+        short_name: "PersonalTrack",
         description: "All In One Rental Apps",
         icons: [
           {

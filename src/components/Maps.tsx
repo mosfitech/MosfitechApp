@@ -9,7 +9,6 @@ import Map, {
 } from "react-map-gl";
 import Pin from "./Pin";
 import axios from "axios";
-import Alert from "./Alert";
 
 // import CITIES from "../.data/Cities.json";
 
@@ -45,7 +44,6 @@ export default function Maps(props: any) {
 
   return (
     <>
-      {dataKits.warning_status == 1 && <Alert />}
       <Map
         initialViewState={{
           latitude: dataKits.latitude_kit,

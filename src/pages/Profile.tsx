@@ -1,11 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../context/authContext";
-export default function Profile({ setPages }) {
-  const { status, userId, handleLogOut, displayName, email, photoURL } =
-    useContext(AuthContext);
+import { destroyCookie, parseCookies } from "nookies";
+
+type ProfileProps = {
+  setPages: any;
+  handleLogOut: () => void;
+};
+export default function Profile({ setPages, handleLogOut }: ProfileProps) {
+  const cookies = parseCookies();
+
   return (
-    <div className="bg-primary h-full w-full">
+    <div className="h-full w-full">
       <div className="flex justify-start p-5 bg-gray-300 cursor-pointer">
         <svg
           onClick={() => setPages("motrip")}
@@ -23,13 +29,32 @@ export default function Profile({ setPages }) {
           />
         </svg>
       </div>
-      <div className="bg-gray-300 pb-96 rounded-b-3xl shadow-xl">
+      <div className="bg-gray-300">
         <p className="text-3xl font-semibold px-8 py-5">My Profile </p>
-        <div className="flex gap-5 mx-1 justify-center rounded-lg shadow-lg py-5">
-          <img className="rounded-lg" src={photoURL} alt="" />
+        <div className="flex gap-5 mx-1 justify-center rounded-lg shadow-lg py-5 pb-96 rounded-b-3xl shadow-xl">
+          {cookies.username &&
+            (() => {
+              const names = cookies.username.trim().split(" ").filter(Boolean);
+              const initials =
+                names.length > 1 && names[1]
+                  ? `${names[0][0]}${names[1][0]}`
+                  : `${names[0][0]}`;
+
+              return (
+                <div
+                  className={`inline-flex items-center justify-center w-10 h-10 overflow-hidden border-2 border-white bg-gray-600 rounded-full dark:bg-green-700`}
+                >
+                  <span className="font-medium text-xl text-gray-50 dark:text-gray-300">
+                    {initials.toUpperCase()}
+                  </span>
+                </div>
+              );
+            })()}
           <div className="pr-5">
-            <p className="text-md text-gray-950 font-semibold">{displayName}</p>
-            <p className="text-xs text-gray-800">{email}</p>
+            <p className="text-md text-gray-950 font-semibold">
+              {cookies.username}
+            </p>
+            <p className="text-xs text-gray-800">{cookies.nohp}</p>
             <div
               onClick={handleLogOut}
               className="cursor-pointer bg-mobarang text-gray-50 font-bold mt-1 flex justify-center py-1 rounded-lg shadow-md"
